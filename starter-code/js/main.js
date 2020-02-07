@@ -41,9 +41,27 @@ window.addEventListener("load", event => {
 
   // Bind the click event of each element to a function
   document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
+    card.addEventListener("click", e => {
       // TODO: write some code here
-      console.log(`Card clicked: ${card}`);
+
+      let cardCliked = e.target;
+      if (
+        cardCliked.classList.contains("back") &&
+        !cardCliked.classList.contains("front")
+      ) {
+        console.log("here");
+        cardCliked.classList.remove("back");
+        cardCliked.classList.add("front");
+      } else if (
+               cardCliked.classList.contains("front") &&
+               !cardCliked.classList.contains("back")
+             ) {
+               console.log("there");
+               cardCliked.classList.remove("front");
+               cardCliked.classList.add("back");
+             }
+
+      console.log(`Card clicked: ${cardCliked.className}`);
     });
   });
 });
